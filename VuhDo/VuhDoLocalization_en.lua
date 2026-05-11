@@ -17,6 +17,27 @@ VUHDO_I18N_DRUIDS = "Druids";
 VUHDO_I18N_PRIESTS = "Priests";
 VUHDO_I18N_DEATH_KNIGHT = "Death Knights";
 VUHDO_I18N_HERO = "Hero";
+VUHDO_I18N_PROPHET = "Venomancer";
+VUHDO_I18N_FLESHWARDEN = "Knight of Xoroth";
+VUHDO_I18N_RANGER = "Ranger";
+VUHDO_I18N_PYROMANCER = "Pyromancer";
+VUHDO_I18N_WITCHHUNTER = "Witch Hunter";
+VUHDO_I18N_STARCALLER = "Starcaller";
+VUHDO_I18N_SPIRITMAGE = "Runemaster";
+VUHDO_I18N_CULTIST = "Cultist";
+VUHDO_I18N_TINKER = "Tinker";
+VUHDO_I18N_SUNCLERIC = "Sun Cleric";
+VUHDO_I18N_NECROMANCER = "Necromancer";
+VUHDO_I18N_WILDWALKER = "Primalist";
+VUHDO_I18N_CHRONOMANCER = "Chronomancer";
+VUHDO_I18N_STORMBRINGER = "Stormbringer";
+VUHDO_I18N_SONOFARUGAL = "Bloodmage";
+VUHDO_I18N_REAPER = "Reaper";
+VUHDO_I18N_GUARDIAN = "Guardian";
+VUHDO_I18N_MONKS = "Templar";
+VUHDO_I18N_BARBARIAN = "Barbarian";
+VUHDO_I18N_WITCHDOCTOR = "Witch Doctor";
+VUHDO_I18N_DEMONHUNTER = "Demon Hunter";
 
 
 -- Group Model Names
@@ -405,3 +426,27 @@ VUHDO_I18N_LOAD_PROFILE = "Load Profile";
 VUHDO_I18N_DC_SHIELD_NO_MACROS = "No free macro slots for this toon... d/c shield temporarily disabled.";
 VUHDO_I18N_BROKER_TOOLTIP_1 = "|cffffff00Left Click|r to show options menu";
 VUHDO_I18N_BROKER_TOOLTIP_2 = "|cffffff00Right Click|r to show popup menu";
+
+-- Tooltip strings for color picker
+VUHDO_I18N_TT_499 = "Hero class color";
+VUHDO_I18N_TT_500 = "Prophet class color";
+VUHDO_I18N_TT_501 = "Fleshwarden class color";
+VUHDO_I18N_TT_502 = "Ranger class color";
+VUHDO_I18N_TT_503 = "Pyromancer class color";
+VUHDO_I18N_TT_504 = "Witchhunter class color";
+VUHDO_I18N_TT_505 = "Starcaller class color";
+VUHDO_I18N_TT_506 = "Spiritmage class color";
+VUHDO_I18N_TT_507 = "Cultist class color";
+VUHDO_I18N_TT_508 = "Tinker class color";
+VUHDO_I18N_TT_509 = "Suncleric class color";
+VUHDO_I18N_TT_510 = "Necromancer class color";
+VUHDO_I18N_TT_511 = "Wildwalker class color";
+VUHDO_I18N_TT_512 = "Chronomancer class color";
+VUHDO_I18N_TT_513 = "Stormbringer class color";
+VUHDO_I18N_TT_514 = "Son of Arugal class color";
+VUHDO_I18N_TT_515 = "Reaper class color";
+VUHDO_I18N_TT_516 = "Guardian class color";
+VUHDO_I18N_TT_517 = "Monks class color";
+VUHDO_I18N_TT_518 = "Barbarian class color";
+VUHDO_I18N_TT_519 = "Witchdoctor class color";
+VUHDO_I18N_TT_520 = "Demon Hunter class color";

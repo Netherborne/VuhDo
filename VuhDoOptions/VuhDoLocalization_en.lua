@@ -1,4 +1,4 @@
-﻿-- New Options
+-- New Options
 -- @EXACT = false
 VUHDO_I18N_SCANNERS = "Scanners";
 VUHDO_I18N_RESURRECT_SHORT = "Resurrect";
@@ -1117,3 +1117,5 @@ VUHDO_I18N_THIS_TOONS = "This Toon's";
 VUHDO_I18N_SELECTED = "Selected";
 VUHDO_I18N_ALL = "All";
 VUHDO_I18N_REPLACE = "Replace";
+VUHDO_I18N_ROLE_SORT = "Role";
+VUHDO_I18N_TT_521 = "Sort players by their role (Tank > Heal > DPS).";

@@ -9,6 +9,12 @@ local tinsert = tinsert;
 local ipairs = ipairs;
 local twipe = table.wipe;
 local tsort = table.sort;
+local VUHDO_ROLE_PRIORITY = {
+	[60] = 1, -- VUHDO_ID_MELEE_TANK
+	[63] = 2, -- VUHDO_ID_RANGED_HEAL
+	[61] = 3, -- VUHDO_ID_MELEE_DAMAGE
+	[62] = 4, -- VUHDO_ID_RANGED_DAMAGE
+};
 
 
 
@@ -258,6 +264,22 @@ local VUHDO_RAID_SORTERS = {
 						tInfo1, tInfo2 = VUHDO_RAID[aUnitId] or tEmpty, VUHDO_RAID[anotherUnitId] or tEmpty;
 						return (tInfo1["name"] or "") < (tInfo2["name"] or "");
 					end
+				end
+			end,
+
+	[VUHDO_SORT_RAID_ROLE]
+		= function(aUnitId, anotherUnitId)
+				if (sIsPlayerFirst and aUnitId == "player") then
+					return true;
+				elseif (sIsPlayerFirst and anotherUnitId == "player") then
+					return false;
+				else
+					if (VUHDO_PANEL_SETUP[sPanelNum]["MODEL"]["isReverse"]) then
+						aUnitId, anotherUnitId = anotherUnitId, aUnitId;
+					end
+					tInfo1, tInfo2 = VUHDO_RAID[aUnitId] or tEmpty, VUHDO_RAID[anotherUnitId] or tEmpty;
+					return (VUHDO_ROLE_PRIORITY[tInfo1["role"] or 61] or 5) .. (tInfo1["name"] or "")
+						< (VUHDO_ROLE_PRIORITY[tInfo2["role"] or 61] or 5) .. (tInfo2["name"] or "");
 				end
 			end,
 };
