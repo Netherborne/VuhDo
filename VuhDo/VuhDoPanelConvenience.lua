@@ -544,6 +544,10 @@ local function VUHDO_fastCacheInitButton(aPanelNum, aButtonNum)
 	VUHDO_HEALTH_BAR[tButton][6] = VUHDO_GLOBAL[tButtonName .. "BgBarIcBar"];
 	VUHDO_HEALTH_BAR[tTargetButton][6] = VuhDoDummyStatusBar;
 	VUHDO_HEALTH_BAR[tTotButton][6] = VuhDoDummyStatusBar;
+	-- Absorb
+	VUHDO_HEALTH_BAR[tButton][17] = VUHDO_GLOBAL[tButtonName .. "BgBarIcBarAbBar"];
+	VUHDO_HEALTH_BAR[tTargetButton][17] = VuhDoDummyStatusBar;
+	VUHDO_HEALTH_BAR[tTotButton][17] = VuhDoDummyStatusBar;
 	-- Threat
 	VUHDO_HEALTH_BAR[tButton][7] = VUHDO_GLOBAL[tButtonName .. "ThBar"];
 	-- Group Highlight
@@ -573,10 +577,6 @@ local function VUHDO_fastCacheInitButton(aPanelNum, aButtonNum)
 	-- Tot Mana
 	VUHDO_HEALTH_BAR[tButton][16] = VUHDO_GLOBAL[tButtonName .. "TotBgBarHlBarMaBar"];
 	VUHDO_HEALTH_BAR[tTotButton][2] = VUHDO_GLOBAL[tButtonName .. "TotBgBarHlBarMaBar"];
-	-- Absorb
-	VUHDO_HEALTH_BAR[tButton][17] = VUHDO_GLOBAL[tButtonName .. "BgBarAbBar"];
-	VUHDO_HEALTH_BAR[tTargetButton][17] = VuhDoDummyStatusBar;
-	VUHDO_HEALTH_BAR[tTotButton][17] = VuhDoDummyStatusBar;
 
 	VUHDO_HEAL_BUTTON[aPanelNum][aButtonNum] = tButton;
 	VUHDO_BUTTON_CACHE[tButton] = aPanelNum;

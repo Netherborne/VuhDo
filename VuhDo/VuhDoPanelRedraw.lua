@@ -379,6 +379,13 @@ end
 
 
 --
+local function VUHDO_initAbsorbBar()
+	VUHDO_getHealthBar(sButton, 17):SetValueRange(0, 0);
+end
+
+
+
+--
 local tThreatBar;
 local function VUHDO_initThreatBar()
 	tThreatBar =  VUHDO_getHealthBar(sButton, 7);
@@ -1034,7 +1041,7 @@ function VUHDO_initHealButton(aButton, aPanelNum)
 	end
 
 	-- Texture
-	for tCnt =  1, 16 do
+	for tCnt =  1, 17 do
 		tHealthBar = VUHDO_getHealthBar(aButton, tCnt);
 
 		if (sStatusTexture ~= nil) then
@@ -1107,6 +1114,7 @@ function VUHDO_initHealButton(aButton, aPanelNum)
 	VUHDO_initTargetBar();
 	VUHDO_initTotBar();
 	VUHDO_initIncomingBar();
+	VUHDO_initAbsorbBar();
 	VUHDO_initThreatBar();
 	VUHDO_initBarTexts(aButton, sHealthBar, sBarScaling["barWidth"]);
 	VUHDO_initOverhealText(sHealthBar, sBarScaling["barWidth"]);

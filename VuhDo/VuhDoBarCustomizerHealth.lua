@@ -97,59 +97,9 @@ end
 
 
 local tIncColor = { ["useBackground"] = true };
-local tAbsorbColor = { ["R"] = 1, ["G"] = 0.9, ["B"] = 0.3, ["O"] = 0.6, ["useBackground"] = true };
 
 
 --
--- VUHDO_updateAbsorbBar: updates the absorb bar (index 17) for all buttons of aUnit.
--- The bar is rendered from the end of the current health value up to healthPercent+absorbPercent,
--- capped at 100%, using SetValueRange so it correctly clips to the frame border.
-local tAbsBar;
-local tAbsAmount;
-local tAbsMaxPct, tAbsMinPct;
-local function VUHDO_updateAbsorbBar(aUnit)
-	tInfo = VUHDO_RAID[aUnit];
-	tAllButtons = VUHDO_getUnitButtons(VUHDO_resolveVehicleUnit(aUnit));
-
-	if (tInfo == nil or tAllButtons == nil) then
-		return;
-	end
-
-	if (tInfo["healthmax"] == nil or tInfo["healthmax"] == 0) then
-		return;
-	end
-
-	tAbsAmount = UnitGetTotalAbsorbs(aUnit) or 0;
-
-	if (tAbsAmount > 0 and tInfo["connected"] and not tInfo["dead"]) then
-		tAbsMinPct = 100 * tInfo["health"] / tInfo["healthmax"];
-		if (tAbsMinPct > 100) then tAbsMinPct = 100; end
-		if (tAbsMinPct < 0) then tAbsMinPct = 0; end
-
-		tAbsMaxPct = tAbsMinPct + 100 * tAbsAmount / tInfo["healthmax"];
-		if (tAbsMaxPct > 100) then tAbsMaxPct = 100; end
-
-		for _, tButton in pairs(tAllButtons) do
-			tAbsBar = VUHDO_getHealthBar(tButton, 17);
-			if (VUHDO_INDICATOR_CONFIG["CUSTOM"]["HEALTH_BAR"]["invertGrowth"]) then
-				tAbsBar:SetValueRange(100 - tAbsMaxPct, 100 - tAbsMinPct);
-			else
-				tAbsBar:SetValueRange(tAbsMinPct, tAbsMaxPct);
-			end
-			tAbsBar:SetStatusBarColor(tAbsorbColor["R"], tAbsorbColor["G"], tAbsorbColor["B"], tAbsorbColor["O"]);
-			tAbsBar:SetStatusBarTexture("Interface\\AddOns\\VuhDo\\Images\\white_square_16_16");
-			if (tAbsBar.Show) then tAbsBar:Show(); end
-		end
-	else
-		for _, tButton in pairs(tAllButtons) do
-			tAbsBar = VUHDO_getHealthBar(tButton, 17);
-			tAbsBar:SetValueRange(0, 0);
-			if (tAbsBar.Hide) then tAbsBar:Hide(); end
-		end
-	end
-end
-
-
 local function VUHDO_getUnitHealthModiPercent(anInfo, aModifier)
 	if (anInfo["healthmax"] == 0) then
 		return 0;
