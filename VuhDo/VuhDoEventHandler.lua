@@ -166,6 +166,7 @@ function VUHDO_OnLoad(anInstance)
 	anInstance:RegisterEvent("UNIT_HEALTH");
 	anInstance:RegisterEvent("UNIT_MAXHEALTH");
 	anInstance:RegisterEvent("UNIT_HEAL_PREDICTION");
+	anInstance:RegisterEvent("UNIT_ABSORB_AMOUNT_CHANGED");
 	anInstance:RegisterEvent("UNIT_AURA");
 	anInstance:RegisterEvent("UNIT_TARGET");
 
@@ -419,6 +420,10 @@ function VUHDO_OnEvent(anInstance, anEvent, anArg1, anArg2, anArg3, anArg4, _, a
 			VUHDO_updateHealth(anArg1, 2); -- VUHDO_UPDATE_HEALTH
 		end
 	elseif ("UNIT_HEAL_PREDICTION" == anEvent) then
+		if ((VUHDO_RAID or tEmptyRaid)[anArg1] ~= nil) then
+			VUHDO_updateHealthBarsFor(anArg1, 9); -- VUHDO_UPDATE_INC
+		end
+	elseif ("UNIT_ABSORB_AMOUNT_CHANGED" == anEvent) then
 		if ((VUHDO_RAID or tEmptyRaid)[anArg1] ~= nil) then
 			VUHDO_updateHealthBarsFor(anArg1, 9); -- VUHDO_UPDATE_INC
 		end

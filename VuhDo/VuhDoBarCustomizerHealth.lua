@@ -180,11 +180,11 @@ local function VUHDO_updateIncHeal(aUnit)
     	tIncBar = VUHDO_getHealthBar(tButton, 6);
 
 			tSetup = VUHDO_PANEL_SETUP[VUHDO_BUTTON_CACHE[tButton]];
-			if (VUHDO_INDICATOR_CONFIG["CUSTOM"]["HEALTH_BAR"]["invertGrowth"] and tInfo["healthmax"] > 0) then
+			if (tInfo["healthmax"] > 0) then
 				tIncBar:SetValueRange(100 * tInfo["health"] / tInfo["healthmax"], tHealthPlusInc);
 			else
-  			tIncBar:SetValue(tHealthPlusInc);
-  		end
+				tIncBar:SetValueRange(0, 0);
+			end
 
    		if (tIncColor["R"] == -1) then
    			tIncColor["R"], tIncColor["G"], tIncColor["B"] = VUHDO_getHealthBar(tButton, 1):GetStatusBarColor();
@@ -214,14 +214,61 @@ local function VUHDO_updateIncHeal(aUnit)
 
 	else
 		for _, tButton in pairs(tAllButtons) do
-			if (VUHDO_INDICATOR_CONFIG["CUSTOM"]["HEALTH_BAR"]["invertGrowth"]) then
-				VUHDO_getHealthBar(tButton, 6):SetValueRange(0, 0);
-			else
-  			VUHDO_getHealthBar(tButton, 6):SetValue(0);
-  		end
+			VUHDO_getHealthBar(tButton, 6):SetValueRange(0, 0);
 			if (tIsOverhealText) then
 				VUHDO_getOverhealText(VUHDO_getHealthBar(tButton, 1)):SetText("");
 			end
+		end
+	end
+end
+
+--
+local tAbsorbColor = { ["R"] = 1.0, ["G"] = 1.0, ["B"] = 1.0, ["O"] = 1, ["useBackground"] = true, ["useOpacity"] = true };
+local tAmountAbsorb;
+local tHealthPlusAbsorb;
+local tAbsorbBar;
+local function VUHDO_updateAbsorbs(aUnit)
+	tInfo = VUHDO_RAID[aUnit];
+	tAllButtons = VUHDO_getUnitButtons(VUHDO_resolveVehicleUnit(aUnit));
+
+	if (tInfo == nil or tAllButtons == nil) then
+		return;
+	end
+
+	if UnitGetTotalAbsorbs then
+		tAmountAbsorb = UnitGetTotalAbsorbs(tInfo["name"]) or 0;
+	else
+		tAmountAbsorb = 0;
+	end
+
+	if not VUHDO_CONFIG["SHOW_ABSORB"] then
+		tAmountAbsorb = 0;
+	end
+
+	if (tAmountAbsorb > 0 and tInfo["connected"] and not tInfo["dead"]) then
+		tHealthPlusAbsorb = VUHDO_getUnitHealthModiPercent(tInfo, tAmountAbsorb);
+		if (tHealthPlusAbsorb > 100) then
+			tHealthPlusAbsorb = 100;
+		end
+	else
+		tHealthPlusAbsorb = 0;
+	end
+
+	if (tAmountAbsorb > 0) then
+  	for _, tButton in pairs(tAllButtons) do
+    	tAbsorbBar = VUHDO_getHealthBar(tButton, 17);
+
+			if (tInfo["healthmax"] > 0) then
+				tAbsorbBar:SetValueRange(100 * tInfo["health"] / tInfo["healthmax"], tHealthPlusAbsorb);
+			else
+				tAbsorbBar:SetValueRange(0, 0);
+			end
+
+    	VUHDO_setStatusBarColor(tAbsorbBar, tAbsorbColor);
+  	end
+	else
+		for _, tButton in pairs(tAllButtons) do
+			VUHDO_getHealthBar(tButton, 17):SetValueRange(0, 0);
 		end
 	end
 end
@@ -727,6 +774,7 @@ function VUHDO_updateHealthBarsFor(aUnit, anUpdateMode)
 		end
 		tInfo["lifeLossPerc"] = nil;
 		VUHDO_updateIncHeal(aUnit);
+		VUHDO_updateAbsorbs(aUnit);
 
 	elseif (9 == anUpdateMode) then -- VUHDO_UPDATE_INC
 		if (sIsOverhealText) then
@@ -735,6 +783,7 @@ function VUHDO_updateHealthBarsFor(aUnit, anUpdateMode)
 			end
 		end
 		VUHDO_updateIncHeal(aUnit);
+		VUHDO_updateAbsorbs(aUnit);
 
 	elseif (7 == anUpdateMode) then -- VUHDO_UPDATE_AGGRO
 		if (sIsAggroText) then
@@ -754,6 +803,7 @@ function VUHDO_updateHealthBarsFor(aUnit, anUpdateMode)
 			VUHDO_customizeText(tButton, 2, false); -- VUHDO_UPDATE_HEALTH
 		end
 		VUHDO_updateIncHeal(aUnit);
+		VUHDO_updateAbsorbs(aUnit);
 
 	elseif (6 == anUpdateMode) then -- VUHDO_UPDATE_AFK
 		for _, tButton in pairs(tAllButtons) do
@@ -764,6 +814,7 @@ function VUHDO_updateHealthBarsFor(aUnit, anUpdateMode)
 			VUHDO_customizeText(tButton, 1, false); -- VUHDO_UPDATE_ALL
 		end
 		VUHDO_updateIncHeal(aUnit);
+		VUHDO_updateAbsorbs(aUnit);
 
 	elseif (25 == anUpdateMode) then -- VUHDO_UPDATE_RESURRECTION
 		for _, tButton in pairs(tAllButtons) do
@@ -776,6 +827,7 @@ function VUHDO_updateHealthBarsFor(aUnit, anUpdateMode)
 		end
 
 		VUHDO_updateIncHeal(aUnit);
+		VUHDO_updateAbsorbs(aUnit);
 	end
 
 	------------------
@@ -827,6 +879,7 @@ function VUHDO_updateAllPanelBars(aPanelNum)
 
 	for tUnit, _ in pairs(VUHDO_RAID) do
 		VUHDO_updateIncHeal(tUnit);
+		VUHDO_updateAbsorbs(tUnit);
 		VUHDO_updateManaBars(tUnit, 3);
 		VUHDO_manaBarBouquetCallback(tUnit, false, nil, nil, nil, nil, nil, nil, nil);
 	end

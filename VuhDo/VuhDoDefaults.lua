@@ -619,6 +619,7 @@ local VUHDO_DEFAULT_CONFIG = {
 	["EMERGENCY_TRIGGER"] = 100,
 	["MAX_EMERGENCIES"] = 5,
 	["SHOW_INCOMING"] = true,
+	["SHOW_ABSORB"] = true,
 	["SHOW_OVERHEAL"] = true,
 	["SHOW_OWN_INCOMING"] = true,
 	["SHOW_TEXT_OVERHEAL"] = true,
