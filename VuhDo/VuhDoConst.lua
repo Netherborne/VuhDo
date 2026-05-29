@@ -373,7 +373,7 @@ VUHDO_RESURRECTION_SPELLS = { --This is breaking if you add more than two resure
 	["GUARDIAN"] = { },
 	["MONK"] = { },
 	["BARBARIAN"] = { },
-	["WITCHDOCTOR"] = { },
+	["WITCHDOCTOR"] = { VUHDO_SPELL_ID_RECLAIM_SOUL },
 	["DEMONHUNTER"] = { }
 };
 

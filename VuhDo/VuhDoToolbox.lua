@@ -786,3 +786,31 @@ function PlaceRDFIcon(aButton,tIcon,callerFunctionName,debugHeaderTextcolor)
 	end
 end
 
+
+
+--
+function VUHDO_getIncomingHeals(aUnitName)
+	if (not UnitGetIncomingHeals) then
+		return 0;
+	end
+
+	local tConfig = VUHDO_CONFIG or VUHDO_GLOBAL["VUHDO_CONFIG"];
+	if (tConfig == nil) then
+		return 0;
+	end
+
+	local tAllInc = UnitGetIncomingHeals(aUnitName) or 0;
+	local tOwnInc = UnitGetIncomingHeals(aUnitName, "player") or 0;
+
+	if (tConfig["SHOW_INCOMING"] and tConfig["SHOW_OWN_INCOMING"]) then
+		return tAllInc;
+	elseif (tConfig["SHOW_OWN_INCOMING"]) then
+		return tOwnInc;
+	elseif (tConfig["SHOW_INCOMING"]) then
+		return tAllInc - tOwnInc;
+	else
+		return 0;
+	end
+end
+
+

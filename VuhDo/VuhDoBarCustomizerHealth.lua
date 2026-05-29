@@ -161,7 +161,7 @@ local function VUHDO_updateIncHeal(aUnit)
 		return;
 	end
 
-	tAmountInc = UnitGetIncomingHeals(tInfo["name"]);
+	tAmountInc = VUHDO_getIncomingHeals(tInfo["name"]);
 	tOverheal = tAmountInc - tInfo["healthmax"] + tInfo["health"];
 	tRatio = tOverheal / tInfo["healthmax"];
 	if (tAmountInc > 0 and tInfo["connected"] and not tInfo["dead"]) then
@@ -433,7 +433,7 @@ function VUHDO_customizeText(aButton, aMode, anIsTarget)
 
 	-- Life Text
 	if (tIsLife and tIsShowLife) then
-		tAmountInc = UnitGetIncomingHeals(tInfo["name"]);
+		tAmountInc = VUHDO_getIncomingHeals(tInfo["name"]);
 
 		if (sIsOverhealText) then
 			tLifeAmount = tInfo["health"] + tAmountInc;

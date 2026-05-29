@@ -393,7 +393,7 @@ end
 --
 local tOverheal;
 local function VUHDO_overhealHighlightValidator(anInfo, _)
-	tOverheal = UnitGetIncomingHeals(anInfo["name"]) + anInfo["health"];
+	tOverheal = VUHDO_getIncomingHeals(anInfo["name"]) + anInfo["health"];
 	if (tOverheal > anInfo["healthmax"]) then
 		VUHDO_brightenColor(VUHDO_getCurrentBouquetColor(), tOverheal / anInfo["healthmax"]);
 	end
@@ -451,7 +451,7 @@ end
 --
 local function VUHDO_statusHealthValidator(anInfo, _)
   if (sIsInverted) then
-		return true, nil, anInfo["health"] + UnitGetIncomingHeals(anInfo["name"]), -1, anInfo["healthmax"], nil, anInfo["health"];
+		return true, nil, anInfo["health"] + VUHDO_getIncomingHeals(anInfo["name"]), -1, anInfo["healthmax"], nil, anInfo["health"];
   else
 		return true, nil, anInfo["health"], -1, anInfo["healthmax"], nil, anInfo["health"];
 	end
@@ -475,7 +475,7 @@ end
 
 --
 local function VUHDO_statusIncomingValidator(anInfo, _)
-	return true, nil, UnitGetIncomingHeals(anInfo["name"]), -1, anInfo["healthmax"], nil, nil;
+	return true, nil, VUHDO_getIncomingHeals(anInfo["name"]), -1, anInfo["healthmax"], nil, nil;
 end
 
 
