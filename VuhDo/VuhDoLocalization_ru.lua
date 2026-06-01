@@ -1,4 +1,4 @@
-﻿if (GetLocale() ~= "ruRU") then
+if (GetLocale() ~= "ruRU") then
 	return;
 end
 -- Class Names
@@ -215,6 +215,7 @@ VUHDO_I18N_MELEE_TANK = "Ближний бой - Танк";
 VUHDO_I18N_MELEE_DPS = "Ближний бой - DPS";
 VUHDO_I18N_RANGED_DPS = "Дальний бой - DPS";
 VUHDO_I18N_RANGED_HEALERS = "Дальний бой - Лекарь";
+VUHDO_I18N_SUPPORTS = "Support";
 VUHDO_I18N_AUTO_DETECT = "<авто обнаруж.>";
 VUHDO_I18N_PROMOTE_ASSIST_MSG_1 = "Произведён |cffffe566";
 VUHDO_I18N_PROMOTE_ASSIST_MSG_2 = "|r в помощники.";

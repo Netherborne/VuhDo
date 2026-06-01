@@ -1,4 +1,4 @@
-﻿
+
 if (GetLocale() ~= "zhCN") then
 	return;
 end
@@ -225,6 +225,7 @@ VUHDO_I18N_ROLE_OVERRIDE = "Role override";
 VUHDO_I18N_MELEE_TANK = "近战 - 坦克";
 VUHDO_I18N_MELEE_DPS = "近战 - 伤害输出";
 VUHDO_I18N_RANGED_DPS = "远程 - 伤害输出";
+VUHDO_I18N_SUPPORTS = "Support";
 VUHDO_I18N_RANGED_HEALERS = "远程 - 治疗";
 VUHDO_I18N_AUTO_DETECT = "<自动侦测>";
 VUHDO_I18N_PROMOTE_ASSIST_MSG_1 = "提升 |cffffe566";

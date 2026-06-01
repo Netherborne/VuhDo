@@ -308,7 +308,7 @@ function VUHDO_determineRole(aUnit)
 	tName = tInfo["name"];
 	-- Manual role override oder dungeon finder role?
 	if aUnit == VUHDO_PLAYER_RAID_ID then 
-		tFixRole = VUHDO_MANUAL_ROLES[tName] or VUHDO_determineDfToolRole(tInfo) or CoA_Determine_Role(tInfo)
+		tFixRole = VUHDO_MANUAL_ROLES[tName] or VUHDO_determineDfToolRole(tInfo)
 	else
 	 	tFixRole = VUHDO_MANUAL_ROLES[tName] or VUHDO_determineDfToolRole(tInfo)
 	end
@@ -343,7 +343,13 @@ function VUHDO_determineRole(aUnit)
 	local _, _, tBuffExist_ToL = UnitBuff(aUnit, VUHDO_SPELL_ID_TREE_OF_LIFE);
 	local _, _, tBuffExist_Spir = UnitBuff(aUnit, VUHDO_SPELL_ID_BUFF_SPIRIT);
 
-	if (VUHDO_FIX_ROLES[tName] ~= nil) then -- TODO: Add Ascension talent check here
+	-- local tCoaRole = CoA_Determine_Role and CoA_Determine_Role(tInfo);
+	-- if (tCoaRole ~= nil) then
+	-- 	VUHDO_FIX_ROLES[tName] = tCoaRole;
+	-- 	return tCoaRole;
+	-- end
+
+	if (VUHDO_FIX_ROLES[tName] ~= nil) then
 		return VUHDO_FIX_ROLES[tName];
 	elseif (tBuffExist_RF or tBuffExist_AotM or tBuffExist_BF or tBuffExist_DBF or tBuffExist_CC or tDefense>20 or tBuffExist_MFB) then
 		VUHDO_FIX_ROLES[tName] = 60; -- VUHDO_ID_MELEE_TANK

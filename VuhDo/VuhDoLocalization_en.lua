@@ -1,4 +1,4 @@
-﻿
+
 -- @EXACT = true: Translation has to be the exact(!) match in the clients language,
 --                beacause it carries technical semantics
 -- @EXACT = false: Translation can be done freely, because text is only descriptive
@@ -242,6 +242,7 @@ VUHDO_I18N_MELEE_TANK = "Melee-Tank";
 VUHDO_I18N_MELEE_DPS = "Melee-DPS";
 VUHDO_I18N_RANGED_DPS = "Ranged-DPS";
 VUHDO_I18N_RANGED_HEALERS = "Ranged-Healer";
+VUHDO_I18N_SUPPORTS = "Support";
 VUHDO_I18N_AUTO_DETECT = "<auto detect>";
 VUHDO_I18N_PROMOTE_ASSIST_MSG_1 = "Promoted |cffffe566";
 VUHDO_I18N_PROMOTE_ASSIST_MSG_2 = "|r to assistant.";

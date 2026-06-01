@@ -1,4 +1,4 @@
-﻿
+
 if (GetLocale() ~= "deDE") then
 	return;
 end
@@ -220,6 +220,7 @@ VUHDO_I18N_MELEE_TANK = "Melee - Tank";
 VUHDO_I18N_MELEE_DPS = "Melee - DPS";
 VUHDO_I18N_RANGED_DPS = "Ranged - DPS";
 VUHDO_I18N_RANGED_HEALERS = "Ranged - Heiler";
+VUHDO_I18N_SUPPORTS = "Support";
 VUHDO_I18N_AUTO_DETECT = "<automatisch>";
 VUHDO_I18N_PROMOTE_ASSIST_MSG_1 = "|cffffe566";
 VUHDO_I18N_PROMOTE_ASSIST_MSG_2 = "|r wurde zum Assistenten ernannt.";

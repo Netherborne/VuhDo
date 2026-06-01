@@ -1,4 +1,4 @@
-﻿
+
 if (GetLocale() ~= "zhTW") then
 	return;
 end
@@ -224,6 +224,7 @@ VUHDO_I18N_MELEE_TANK = "近戰-坦克";
 VUHDO_I18N_MELEE_DPS = "近戰-傷害輸出";
 VUHDO_I18N_RANGED_DPS = "遠程-傷害輸出";
 VUHDO_I18N_RANGED_HEALERS = "遠程-治療";
+VUHDO_I18N_SUPPORTS = "Support";
 VUHDO_I18N_AUTO_DETECT = "<自動偵測>";
 VUHDO_I18N_PROMOTE_ASSIST_MSG_1 = "提升|cffffe566";
 VUHDO_I18N_PROMOTE_ASSIST_MSG_2 = "|r為助理.";

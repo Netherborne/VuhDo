@@ -492,6 +492,9 @@ function VUHDO_OnEvent(anInstance, anEvent, anArg1, anArg2, anArg3, anArg4, _, a
 	elseif ("RAID_TARGET_UPDATE" == anEvent) then
 		VUHDO_TIMERS["CUSTOMIZE"] = 0.1;
 	elseif ("PLAYER_REGEN_ENABLED" == anEvent) then
+		if (VUHDO_MACROS_PENDING) then
+			VUHDO_initKeyboardMacros();
+		end
 		if (not VUHDO_isReloadPending()) then
 			VUHDO_quickRaidReload();
 		end

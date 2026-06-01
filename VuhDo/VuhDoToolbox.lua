@@ -729,6 +729,8 @@ function PlaceRDFIcon(aButton,tIcon,callerFunctionName,debugHeaderTextcolor)
 			tIcon:SetTexCoord(GetTexCoordsForRole("TANK"));
 		elseif (VUHDO_ID_RANGED_HEAL == tRole) then
 			tIcon:SetTexCoord(GetTexCoordsForRole("HEALER"));
+		elseif (VUHDO_ID_SUPPORT == tRole) then
+			tIcon:SetTexCoord(GetTexCoordsForRole("SUPPORT"));
 		else
 			tIcon:SetTexCoord(GetTexCoordsForRole("DAMAGER"));
 		end
